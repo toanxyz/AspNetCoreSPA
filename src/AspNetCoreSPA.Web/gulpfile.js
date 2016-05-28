@@ -8,11 +8,11 @@ var webroot = "./wwwroot/";
 
 var paths = {
     js: webroot + "app/**/*.js",
-    css: webroot + "css/**/*.css"
+    css: webroot + "styles/**/*.css"
 };
 
 // This task will copy neccessary JS from node_modules to our lib folder
 // This will copy libs defined in "dependencies" in package.json
 gulp.task('lib', function () {
-    gulp.src(gnf(), { base: './node_modules/' }).pipe(gulp.dest(webroot + "lib/"));
+    gulp.src(gnf(), { base: './node_modules/' }).pipe(gulp.dest(webroot + "libraries/"));
 });
