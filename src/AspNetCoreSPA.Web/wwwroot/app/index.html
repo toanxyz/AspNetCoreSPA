@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,7 +15,27 @@
     <!-- endinject -->
 </head>
 <body ng-app="app">
-    <div ui-view></div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#">AspNetCoreSPA</a>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="jumbotron">
+            <h1>AspNetCoreSPA</h1>
+            <p class="lead">Welcome to AspNetCoreSPA</p>
+        </div>
+        <div class="row">
+            <div ui-view></div>
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; 2016 - Toan Manh Nguyen</p>
+        </footer>
+    </div>
 
     <!-- inject:js -->
     <script src="/libraries/jquery/dist/jquery.js"></script>
