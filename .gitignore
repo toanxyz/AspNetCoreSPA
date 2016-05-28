@@ -22,7 +22,7 @@ bld/
 [Oo]bj/
 
 # Lib Folder
-wwwroot/lib
+**/wwwroot/libraries/
 
 # Visual Studio 2015 cache/options directory
 .vs/
