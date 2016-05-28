@@ -1,66 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AspNetCoreSPA</title>
 
-    <link href="~/libraries/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/styles/site.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var site = site || {};
+    </script>
 
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/libraries/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/styles/site.css">
+    <!-- endinject -->
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="#">AspNetCoreSPA</a>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        <div class="jumbotron">
-            <h1>AspNetCoreSPA</h1>
-            <p class="lead">Welcome to AspNetCoreSPA</p>
-        </div>
-        <div class="row">
-            <h2>Student List</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<body ng-app="app">
+    <div ui-view></div>
 
-        <hr />
-        <footer>
-            <p>&copy; 2016 - Toan Manh Nguyen</p>
-        </footer>
-    </div>
-
-    <script src="~/libraries/jquery/dist/jquery.js"></script>
-    <script src="~/libraries/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/libraries/angular/angular.js"></script>
-    <script src="~/libraries/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- inject:js -->
+    <script src="/libraries/jquery/dist/jquery.js"></script>
+    <script src="/libraries/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/libraries/angular/angular.js"></script>
+    <script src="/libraries/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/scripts/site.common.js"></script>
+    <script src="/scripts/site.ng.js"></script>
+    <script src="/app/main/main.controller.js"></script>
+    <script src="/app/index.module.js"></script>
+    <script src="/app/index.route.js"></script>
+    <!-- endinject -->
 </body>
 </html>
