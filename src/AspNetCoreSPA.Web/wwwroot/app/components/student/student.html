@@ -1,27 +1,49 @@
 ﻿<h2>Student List</h2>
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-        </tr>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
+    <tr ng-repeat="student in studentCtrl.students">
+        <td>{{student.FirstName}}</td>
+        <td>{{student.LastName}}</td>
+        <td>{{student.Email}}</td>
+    </tr>
     </tbody>
 </table>
+
+<input type="button" class="btn btn-default" value="Create" data-toggle="modal" data-target="#formCreateStudent"/>
+
+<form id="formCreateStudent" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create new student</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="studentCtrl.createStudentInput.FirstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="studentCtrl.createStudentInput.LastName">
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email address</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="Email" ng-model="studentCtrl.createStudentInput.Email">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" ng-click="studentCtrl.createStudent()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</form>
