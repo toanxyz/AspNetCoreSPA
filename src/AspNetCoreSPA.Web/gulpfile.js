@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='inject:index' />
+/// <binding BeforeBuild='lib' />
 "use strict";
 
 var gulp = require("gulp"),

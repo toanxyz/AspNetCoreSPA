@@ -3,9 +3,10 @@
 
     angular
         .module('app')
-        .controller('MainController', MainController);
+        .controller('StudentController', MainController);
 
     function MainController($scope) {
         var vm = this;
+
     }
 })();
