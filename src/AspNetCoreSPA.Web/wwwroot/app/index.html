@@ -9,8 +9,10 @@
         var site = site || {};
     </script>
 
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/libraries/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/libraries/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/styles/site.css">
     <!-- endinject -->
 </head>
@@ -37,16 +39,18 @@
         </footer>
     </div>
 
-    <!-- inject:js -->
+    <!-- bower:js -->
     <script src="/libraries/jquery/dist/jquery.js"></script>
     <script src="/libraries/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/libraries/angular/angular.js"></script>
     <script src="/libraries/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
     <script src="/scripts/site.common.js"></script>
     <script src="/scripts/site.ng.js"></script>
-    <script src="/app/main/main.controller.js"></script>
     <script src="/app/index.module.js"></script>
     <script src="/app/index.route.js"></script>
+    <script src="/app/main/main.controller.js"></script>
     <!-- endinject -->
 </body>
 </html>

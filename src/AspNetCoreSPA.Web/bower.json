@@ -1,0 +1,19 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "3.3.6",
+    "angular": "1.5.5",
+    "angular-ui-router": "0.3.0"
+  },
+  "overrides":{
+      "bootstrap":{
+        "main": [
+          "less/bootstrap.less",
+          "dist/css/bootstrap.css",
+          "dist/js/bootstrap.js"
+        ]
+      }
+   }
+}

@@ -1,51 +1,35 @@
-﻿/// <binding BeforeBuild='index' />
+﻿/// <binding BeforeBuild='inject:index' />
 "use strict";
 
 var gulp = require("gulp"),
-    gnf = require('gulp-npm-files'),
-    inject = require('gulp-inject');
+    series = require('stream-series'),
+    inject = require('gulp-inject'),
+    wiredep = require('wiredep').stream;
 
 var webroot = "./wwwroot/";
 
 var paths = {
-    appJs: webroot + "app/**/*.js",
-    appCss: webroot + "styles/**/*.css",
-
-    boostrapCss: webroot + "libraries/bootstrap/dist/css/bootstrap.css",
-
+    ngModule: webroot + "app/**/*.module.js",
+    ngRoute: webroot + "app/**/*.route.js",
+    ngController: webroot + "app/**/*.controller.js",
     script: webroot + "scripts/**/*.js",
-
-    jquery: webroot + "libraries/jquery/dist/jquery.js",
-    bootstrap: webroot + "libraries/bootstrap/dist/js/bootstrap.js",
-    angular: webroot + "libraries/angular/angular.js",
-    angularRouter: webroot + "libraries/angular-ui-router/release/angular-ui-router.js",
+    style: webroot + "styles/**/*.css"
 };
 
-// This task will copy neccessary JS from node_modules to our lib folder
-// This will copy libs defined in "dependencies" in package.json
 gulp.task('lib', function () {
-    gulp.src(gnf(), { base: './node_modules/' }).pipe(gulp.dest(webroot + "libraries/"));
-});
+    var moduleSrc = gulp.src(paths.ngModule, { read: false });
+    var routeSrc = gulp.src(paths.ngRoute, { read: false });
+    var controllerSrc = gulp.src(paths.ngController, { read: false });
+    var scriptSrc = gulp.src(paths.script, { read: false });
+    var styleSrc = gulp.src(paths.style, { read: false });
 
-gulp.task('inject:index', function () {
-    var target = gulp.src(webroot + 'app/index.html');
-
-    var sources = [
-        paths.jquery,
-        paths.bootstrap,
-        paths.angular,
-        paths.angularRouter,
-
-        paths.script,
-        paths.appJs,
-
-        paths.boostrapCss,
-        paths.appCss
-    ];
-
-    var src = gulp.src(sources, { read: false });
-
-    return target
-        .pipe(inject(src, { ignorePath: '/wwwroot', addRootSlash: true }))
+    gulp.src(webroot + 'app/index.html')
+        .pipe(wiredep({
+            optional: 'configuration',
+            goes: 'here',
+            ignorePath: '..'
+        }))
+        .pipe(inject(series(scriptSrc, moduleSrc, routeSrc, controllerSrc), { ignorePath: '/wwwroot' }))
+        .pipe(inject(series(styleSrc), { ignorePath: '/wwwroot' }))
         .pipe(gulp.dest(webroot + 'app'));
 });
