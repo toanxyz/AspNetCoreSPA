@@ -22,6 +22,15 @@
                     $('#formCreateStudent').modal('toggle');
                 });
         }
+        
+        vm.searchStudent = function () {
+            $http.get("api/student/searchStudent", {
+                params: { firstName: vm.searchStudent.FirstName }
+            }).then(function (respone) {
+                site.log.debug(respone);
+                vm.students = respone.data;
+            });
+        }
 
         $http.get("api/student/getAll")
             .then(function(response) {
