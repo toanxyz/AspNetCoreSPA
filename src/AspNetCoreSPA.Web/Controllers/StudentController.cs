@@ -34,6 +34,13 @@ namespace AspNetCoreSPA.Web.Controllers
 
             return Json(_students);
         }
+        
+        [Route("searchStudent")]
+        [HttpGet]
+        public IActionResult Search([FromQuery] string firstName)
+        {
+            return Json(_students.Where(student => student.FirstName.Equals(firstName)));
+        }
     }
 
     public class Student
