@@ -96,7 +96,7 @@
                 return {
 
                     'request': function (config) {
-                        if (endsWith(config.url, '.html')) {
+                        if (endsWith(config.url, '.cshtml')) {
                             config.url = site.appPath + 'AppView/Load?viewUrl=' + config.url + '&_t=' + site.pageLoadTime.getTime();
                         }
 
