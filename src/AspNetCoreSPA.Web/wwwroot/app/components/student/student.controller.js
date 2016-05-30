@@ -11,6 +11,7 @@
         vm.students = [];
 
         vm.createStudentInput = {};
+        vm.searchStudent = {};
 
         vm.createStudent = function () {
             $http.post("api/student/createStudent", JSON.stringify(vm.createStudentInput))
