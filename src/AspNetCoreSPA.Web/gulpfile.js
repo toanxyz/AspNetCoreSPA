@@ -31,7 +31,7 @@ gulp.task('lib', function () {
             goes: 'here',
             ignorePath: '..'
         }))
-        .pipe(inject(series(scriptSrc, moduleSrc, routeSrc, serviceSrc, controllerSrc), { ignorePath: '/wwwroot' }))
+        .pipe(inject(series(scriptSrc, moduleSrc, serviceSrc, controllerSrc, routeSrc), { ignorePath: '/wwwroot' }))
         .pipe(inject(series(styleSrc), { ignorePath: '/wwwroot' }))
         .pipe(gulp.dest(webroot + 'app'));
 });

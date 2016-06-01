@@ -90,8 +90,8 @@
     var siteModule = angular.module('site', []);
 
     siteModule.config([
-        '$httpProvider', function ($httpProvider, $state) {
-            $httpProvider.interceptors.push(['$q', '$state', function ($q, $state) {
+        '$httpProvider', function ($httpProvider) {
+            $httpProvider.interceptors.push(function ($q, $injector) {
 
                 return {
 
@@ -112,6 +112,8 @@
                     },
 
                     'responseError': function (ngError) {
+                        var state = $injector.get('$state');
+                        var auth0 = $injector.get('auth0Service');
                         var error = {
                             message: ngError.data || site.ng.http.defaultError.message,
                             details: ngError.statusText || site.ng.http.defaultError.details,
@@ -119,7 +121,8 @@
                         }
 
                         if (ngError.status === 401) {
-                            $state.go("login");
+                            auth0.clear();
+                            state.go("login");
                         } else {
                             site.ng.http.showError(error);
                         }
@@ -128,7 +131,7 @@
                     }
 
                 };
-            }]);
+            });
         }
     ]);
 })((site || (site = {})), (angular || undefined));

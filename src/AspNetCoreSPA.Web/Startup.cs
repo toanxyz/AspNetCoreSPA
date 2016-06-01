@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AspNetCoreSPA.Common.Entities;
 using AspNetCoreSPA.EntityFramework;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace AspNetCoreSPA.Web
 {
@@ -52,39 +54,45 @@ namespace AspNetCoreSPA.Web
 
             app.UseStaticFiles();
 
-            var authenticationOptions = new CookieAuthenticationOptions
-            {
-                AuthenticationScheme = "Identity.Application",
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                Events = new CookieAuthenticationEvents
-                {
-                    OnValidatePrincipal = SecurityStampValidator.ValidatePrincipalAsync,
-                    OnRedirectToLogin = ctx =>
-                    {
-                        if (ctx.Request.Path.StartsWithSegments("/api") &&
-                            ctx.Response.StatusCode == (int)HttpStatusCode.OK)
-                        {
-                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        }
-                        else
-                        {
-                            ctx.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        }
-
-                        return Task.FromResult(0);
-                    }
-                },
-                ExpireTimeSpan = TimeSpan.FromSeconds(10),
-                CookieHttpOnly = false,
-                
-            };
-
-            app.UseCookieAuthentication(authenticationOptions);
-
             //app.UseIdentity();
 
+            app.UseMyIdentity();
+
             app.UseMvcWithDefaultRoute();
+
+            //CreateSampleData(app.ApplicationServices);
+        }
+
+        private static async Task CreateSampleData(IServiceProvider applicationServices)
+        {
+            using (var dbContext = applicationServices.GetService<ApplicationDbContext>())
+            {
+                var sqlServerDatabase = dbContext.Database;
+                if (sqlServerDatabase != null)
+                {
+                    if (await sqlServerDatabase.EnsureCreatedAsync())
+                    {
+                        // add some users
+                        var userManager = applicationServices.GetService<UserManager<ApplicationUser>>();
+
+                        // add editor user
+                        var stephen = new ApplicationUser
+                        {
+                            UserName = "Stephen"
+                        };
+                        var result = await userManager.CreateAsync(stephen, "P@ssw0rd");
+                        await userManager.AddClaimAsync(stephen, new Claim("CanEdit", "true"));
+
+                        // add normal user
+                        var bob = new ApplicationUser
+                        {
+                            UserName = "Bob"
+                        };
+                        await userManager.CreateAsync(bob, "P@ssw0rd");
+                    }
+
+                }
+            }
         }
     }
 }

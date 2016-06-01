@@ -5,7 +5,7 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    function LoginController($scope, $http, $state, AuthenticationService) {
+    function LoginController($scope, $http, $state, auth0Service) {
         var vm = this;
 
         vm.loginInfo = {
@@ -15,8 +15,9 @@
 
         vm.login = function () {
             vm.dataLoading = true;
-            AuthenticationService.Login(vm.loginInfo, function (response) {
+            auth0Service.login(vm.loginInfo, function (response) {
                 if (response == "OK") {
+                    auth0Service.authenticate();
                     $state.go('main');
                 } else {
                     vm.dataLoading = false;

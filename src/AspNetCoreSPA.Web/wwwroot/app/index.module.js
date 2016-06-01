@@ -4,19 +4,19 @@
     angular
         .module('app',
         [
-            'ngCookies',
+            'ngStorage',
             'ui.router',
             'site'
         ]);
 
-    angular.module('app').run(function ($rootScope, $templateCache, $state, $cookies) {
+    angular.module('app').run(function ($rootScope, $templateCache, $state, auth0Service) {
         $rootScope.$on('$viewContentLoaded', function () {
             $templateCache.removeAll();
         });
 
-        $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams, AuthenticationService) {
+        $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
             var isLogin = toState.name === "login";
-            var athenticated = isAuthenticated();
+            var athenticated = auth0Service.isAuthenticated();
             if (isLogin) {
                 if (athenticated) {
                     e.preventDefault();
@@ -34,16 +34,6 @@
                 $state.go('login');
             }
         });
-
-        function isAuthenticated() {
-            var cookie = $cookies.get('.AspNetCore.Identity.Application');
-
-            if (cookie) {
-                return true;
-            }
-
-            return false;
-        }
     });
 
 })();
