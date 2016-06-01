@@ -1,10 +1,15 @@
 ﻿<h2>Student List</h2>
+    <div class="col-md-3">
+        <input class="form-control" type="text" placeholder="Search Students" ng-model="studentCtrl.searchStudent.FirstName"/>
+    </div>
+    <input type="button" class="btn btn-default" value="Search" ng-click="studentCtrl.searchStudent()"/>
 <table class="table table-striped">
     <thead>
     <tr>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Email</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +17,10 @@
         <td>{{student.FirstName}}</td>
         <td>{{student.LastName}}</td>
         <td>{{student.Email}}</td>
+        <td>
+        <a ng-click="studentCtrl.editStudent(student.ID)">Edit</a>| 
+        <a ng-click="studentCtrl.viewStudent()">Details</a>| 
+        <a ng-click="studentCtrl.deleteStudent(student.ID)">Delete</a></td>
     </tr>
     </tbody>
 </table>

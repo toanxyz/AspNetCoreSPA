@@ -1,9 +1,11 @@
 ﻿using AspNetCoreSPA.Web.Configurations;
+using AspNetCoreSPA.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreSPA.Web
 {
@@ -22,6 +24,9 @@ namespace AspNetCoreSPA.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(connection));
+
             services.AddMvc();
             services.ReplaceDefaultViewEngine();
         }

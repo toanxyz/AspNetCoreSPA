@@ -122,7 +122,7 @@
                             responseError: true
                         }
 
-                        site.ng.http.showError(error);
+                        //site.ng.http.showError(error);
 
                         site.ng.http.logError(error);
 
