@@ -90,16 +90,12 @@
     var siteModule = angular.module('site', []);
 
     siteModule.config([
-        '$httpProvider', function ($httpProvider) {
-            $httpProvider.interceptors.push(['$q', function ($q) {
+        '$httpProvider', function ($httpProvider, $state) {
+            $httpProvider.interceptors.push(['$q', '$state', function ($q, $state) {
 
                 return {
 
                     'request': function (config) {
-                        if (endsWith(config.url, '.cshtml')) {
-                            config.url = site.appPath + 'AppView/Load?viewUrl=' + config.url + '&_t=' + site.pageLoadTime.getTime();
-                        }
-
                         return config;
                     },
 
@@ -122,9 +118,11 @@
                             responseError: true
                         }
 
-                        site.ng.http.showError(error);
-
-                        site.ng.http.logError(error);
+                        if (ngError.status === 401) {
+                            $state.go("login");
+                        } else {
+                            site.ng.http.showError(error);
+                        }
 
                         return $q.reject(ngError);
                     }
