@@ -1,5 +1,31 @@
-﻿<h2>This application consists of:</h2>
-<ul>
-    <li>Sample pages using ASP.NET Core with AngularJS, NPM, Gulp, Bower, Bootstrap, Jquery</li>
-    <li>More detail <a href="http://www.codeproject.com/script/Articles/ArticleVersion.aspx?waid=209236&aid=1102877">here</a></li>
-</ul>
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ui-sref="home" class="navbar-brand">AspNetCoreSPA</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="main">Home</a></li>
+                <li><a ui-sref="student">Student</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container body-content">
+    <div class="jumbotron">
+        <h1>AspNetCoreSPA</h1>
+        <p class="lead">Welcome to AspNetCoreSPA</p>
+    </div>
+
+    <div ui-view="content"></div>
+
+    <hr />
+    <footer>
+        <p>&copy; 2016 - Toan Manh Nguyen</p>
+    </footer>
+</div>

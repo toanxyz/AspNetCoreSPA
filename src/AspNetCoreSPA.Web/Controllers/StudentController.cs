@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreSPA.Web.Models;
 
 namespace AspNetCoreSPA.Web.Controllers
 {
+    [Produces("application/json")]
     [Route("api/student")]
+    [Authorize]
     public class StudentController : Controller
     {
         //private static List<Student> _students = new List<Student>
@@ -26,16 +29,14 @@ namespace AspNetCoreSPA.Web.Controllers
         //Add database
         private StudentDbContext _dbContext;
 
-        [Route("getAll")]
-        [HttpGet]
+        [Route("getAll"), HttpGet]
         public IActionResult GetAll()
         {
             //return Json(_students);
             return Json(_dbContext.Students.ToList());
         }
 
-        [Route("createStudent")]
-        [HttpPost]
+        [Route("createStudent"), HttpPost]
         public IActionResult CreateStudent([FromBody] Student student)
         {
             if (!ModelState.IsValid)
@@ -50,8 +51,7 @@ namespace AspNetCoreSPA.Web.Controllers
             return Json(_dbContext.Students.ToList());
         }
         
-        [Route("searchStudent")]
-        [HttpGet]
+        [Route("searchStudent"), HttpGet]
         public IActionResult Search([FromQuery] string firstName)
         {
             if(firstName == null)

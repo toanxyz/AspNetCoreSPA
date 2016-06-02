@@ -17,52 +17,29 @@
     <!-- endinject -->
 </head>
 <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a ui-sref="home" class="navbar-brand">AspNetCoreSPA</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a ui-sref="home">Home</a></li>
-                    <li><a ui-sref="student">Student</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        <div class="jumbotron">
-            <h1>AspNetCoreSPA</h1>
-            <p class="lead">Welcome to AspNetCoreSPA</p>
-        </div>
-        <div class="row">
-            <div ui-view></div>
-        </div>
-
-        <hr />
-        <footer>
-            <p>&copy; 2016 - Toan Manh Nguyen</p>
-        </footer>
-    </div>
+    <div ui-view="login"></div>
+    <div ui-view="main"></div>
 
     <!-- bower:js -->
     <script src="/libraries/jquery/dist/jquery.js"></script>
     <script src="/libraries/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/libraries/angular/angular.js"></script>
     <script src="/libraries/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/libraries/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- inject:js -->
     <script src="/scripts/site.common.js"></script>
     <script src="/scripts/site.ng.js"></script>
     <script src="/app/index.module.js"></script>
-    <script src="/app/index.route.js"></script>
+    <script src="/app/services/auth.service.js"></script>
+    <script src="/app/login/login.controller.js"></script>
     <script src="/app/main/main.controller.js"></script>
     <script src="/app/components/student/student.controller.js"></script>
+    <script src="/app/components/home/home.controller.js"></script>
+    <script src="/app/index.route.js"></script>
+    <script src="/app/login/login.route.js"></script>
+    <script src="/app/main/main.route.js"></script>
+    <script src="/app/components/student/student.route.js"></script>
     <!-- endinject -->
 </body>
 </html>

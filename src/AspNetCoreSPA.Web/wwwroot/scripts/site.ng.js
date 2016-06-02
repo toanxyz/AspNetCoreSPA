@@ -91,15 +91,11 @@
 
     siteModule.config([
         '$httpProvider', function ($httpProvider) {
-            $httpProvider.interceptors.push(['$q', function ($q) {
+            $httpProvider.interceptors.push(function ($q, $injector) {
 
                 return {
 
                     'request': function (config) {
-                        if (endsWith(config.url, '.cshtml')) {
-                            config.url = site.appPath + 'AppView/Load?viewUrl=' + config.url + '&_t=' + site.pageLoadTime.getTime();
-                        }
-
                         return config;
                     },
 
@@ -116,21 +112,26 @@
                     },
 
                     'responseError': function (ngError) {
+                        var state = $injector.get('$state');
+                        var auth0 = $injector.get('auth0Service');
                         var error = {
                             message: ngError.data || site.ng.http.defaultError.message,
                             details: ngError.statusText || site.ng.http.defaultError.details,
                             responseError: true
                         }
 
-                        //site.ng.http.showError(error);
-
-                        site.ng.http.logError(error);
+                        if (ngError.status === 401) {
+                            auth0.clear();
+                            state.go("login");
+                        } else {
+                            site.ng.http.showError(error);
+                        }
 
                         return $q.reject(ngError);
                     }
 
                 };
-            }]);
+            });
         }
     ]);
 })((site || (site = {})), (angular || undefined));

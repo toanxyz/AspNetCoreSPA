@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="student in studentCtrl.students">
+    <tr ng-repeat="student in vm.students">
         <td>{{student.FirstName}}</td>
         <td>{{student.LastName}}</td>
         <td>{{student.Email}}</td>
@@ -38,15 +38,15 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="studentCtrl.createStudentInput.FirstName">
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="vm.createStudentInput.FirstName">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="studentCtrl.createStudentInput.LastName">
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="vm.createStudentInput.LastName">
                 </div>
                 <div class="form-group">
                     <label for="emailAddress">Email address</label>
-                    <input type="email" class="form-control" id="emailAddress" placeholder="Email" ng-model="studentCtrl.createStudentInput.Email">
+                    <input type="email" class="form-control" id="emailAddress" placeholder="Email" ng-model="vm.createStudentInput.Email">
                 </div>
             </div>
             <div class="modal-footer">

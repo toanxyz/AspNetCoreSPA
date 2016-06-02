@@ -16,7 +16,8 @@ namespace AspNetCoreSPA.Web.Configurations
 
         public override IEnumerable<string> ViewLocationFormats => new List<string>()
         {
-            "~/wwwroot/app/views/{1}/{0}.html",
+            "~/wwwroot/app/components/{1}/{0}.html",
+            "~/wwwroot/app/{1}/{0}.html",
             "~/wwwroot/app/{0}.html"
         };
     }
