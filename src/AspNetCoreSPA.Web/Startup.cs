@@ -60,37 +60,24 @@ namespace AspNetCoreSPA.Web
 
             app.UseMvcWithDefaultRoute();
 
-            //CreateSampleData(app.ApplicationServices);
+            CreateSampleData(app.ApplicationServices);
         }
 
-        private static async Task CreateSampleData(IServiceProvider applicationServices)
+        private static async void CreateSampleData(IServiceProvider applicationServices)
         {
             using (var dbContext = applicationServices.GetService<ApplicationDbContext>())
             {
                 var sqlServerDatabase = dbContext.Database;
                 if (sqlServerDatabase != null)
                 {
-                    if (await sqlServerDatabase.EnsureCreatedAsync())
+                    // add some users
+                    var userManager = applicationServices.GetService<UserManager<ApplicationUser>>();
+                    ApplicationUser user = await userManager.FindByEmailAsync("test01@example.com");
+                    if (user == null)
                     {
-                        // add some users
-                        var userManager = applicationServices.GetService<UserManager<ApplicationUser>>();
-
-                        // add editor user
-                        var stephen = new ApplicationUser
-                        {
-                            UserName = "Stephen"
-                        };
-                        var result = await userManager.CreateAsync(stephen, "P@ssw0rd");
-                        await userManager.AddClaimAsync(stephen, new Claim("CanEdit", "true"));
-
-                        // add normal user
-                        var bob = new ApplicationUser
-                        {
-                            UserName = "Bob"
-                        };
-                        await userManager.CreateAsync(bob, "P@ssw0rd");
+                        user = new ApplicationUser { UserName = "test01", Email = "test01@example.com" };
+                        await userManager.CreateAsync(user, "Qwer!@#12345");
                     }
-
                 }
             }
         }

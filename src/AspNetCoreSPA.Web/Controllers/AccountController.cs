@@ -24,14 +24,6 @@ namespace AspNetCoreSPA.Web.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
-            //var user = new ApplicationUser { UserName = "test01", Email = "test01@example.com" };
-            //var result = _userManager.CreateAsync(user, "Qwer!@#12345");
-
-            //if (result.Result.Succeeded)
-            //{
-
-            //}
         }
 
         [Route("login"), HttpPost]
