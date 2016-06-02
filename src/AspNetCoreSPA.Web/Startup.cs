@@ -6,7 +6,6 @@ using AspNetCoreSPA.Common.Entities;
 using AspNetCoreSPA.EntityFramework;
 using AspNetCoreSPA.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using AspNetCoreSPA.Web.Configurations;
 using AspNetCoreSPA.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +37,10 @@ namespace AspNetCoreSPA.Web
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    o => o.MigrationsAssembly("AspNetCoreSPA.Web")));
+
+            services.AddDbContext<StudentDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("StudentConnection"),
                     o => o.MigrationsAssembly("AspNetCoreSPA.Web")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
