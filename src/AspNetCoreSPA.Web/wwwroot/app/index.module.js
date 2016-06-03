@@ -4,6 +4,7 @@
     angular
         .module('app',
         [
+            'angular-loading-bar',
             'ngStorage',
             'ui.router',
             'site'
