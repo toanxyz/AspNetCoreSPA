@@ -22,16 +22,71 @@
                     // Close dialog
                     $('#formCreateStudent').modal('toggle');
                 });
-        }
+        };
         
         vm.searchStudent = function () {
             $http.get("api/student/searchStudent", {
                 params: { firstName: vm.searchStudent.FirstName }
-            }).then(function (respone) {
-                site.log.debug(respone);
-                vm.students = respone.data;
+            }).then(function (response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                site.log.debug(response);
+                vm.students = response.data;
+            }, function errorCallback(response){
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                site.log.debug(response);
+                vm.students = {};
             });
-        }
+        };
+
+        vm.editStudent = function (studentID) {
+            $http.get("api/student/editStudent", {
+                params: { ID: studentID }
+            }).then(function (response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                site.log.debug(response);
+                vm.students = response.data;
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                site.log.debug(response);
+                vm.students = {};
+            });
+        };
+
+        vm.viewStudent = function () {
+            $http.get("api/student/searchStudent", {
+                params: { firstName: vm.searchStudent.FirstName }
+            }).then(function (response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                site.log.debug(response);
+                vm.students = response.data;
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                site.log.debug(response);
+                vm.students = {};
+            });
+        };
+
+        vm.deleteStudent = function (studentID) {
+            $http.get("api/student/deleteStudent", {
+                params: { ID: studentID }
+            }).then(function (response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                site.log.debug(response);
+                vm.students = response.data;
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                site.log.debug(response);
+                vm.students = {};
+            });
+        };
 
         $http.get("api/student/getAll",
             {

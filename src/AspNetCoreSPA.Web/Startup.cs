@@ -6,6 +6,7 @@ using AspNetCoreSPA.Common.Entities;
 using AspNetCoreSPA.EntityFramework;
 using AspNetCoreSPA.Web.Configurations;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using AspNetCoreSPA.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +39,10 @@ namespace AspNetCoreSPA.Web
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     o => o.MigrationsAssembly("AspNetCoreSPA.Web")));
 
+            services.AddDbContext<StudentDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("StudentConnection"),
+                    o => o.MigrationsAssembly("AspNetCoreSPA.Web")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -53,8 +58,6 @@ namespace AspNetCoreSPA.Web
             loggerFactory.AddDebug();
 
             app.UseStaticFiles();
-
-            //app.UseIdentity();
 
             app.UseMyIdentity();
 
