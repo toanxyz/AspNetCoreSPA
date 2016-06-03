@@ -1,16 +1,24 @@
 ﻿(function () {
     'use strict';
 
-    angular
+    var app =  angular
         .module('app',
         [
+            'apiMock',
             'angular-loading-bar',
             'ngStorage',
             'ui.router',
             'site'
         ]);
 
-    angular.module('app').run(function ($rootScope, $templateCache, $state, auth0Service) {
+    app.config(function (apiMockProvider) {
+        apiMockProvider.config({
+            mockDataPath: 'app/mock_data',
+            apiPath: 'api'
+        });
+    });
+
+    app.run(function ($rootScope, $templateCache, $state, auth0Service) {
         $rootScope.$on('$viewContentLoaded', function () {
             $templateCache.removeAll();
         });

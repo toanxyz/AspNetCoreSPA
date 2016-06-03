@@ -33,7 +33,10 @@
             });
         }
 
-        $http.get("api/student/getAll")
+        $http.get("api/student/getAll",
+            {
+                apiMock: true
+            })
             .then(function(response) {
                 vm.students = response.data;
             });
