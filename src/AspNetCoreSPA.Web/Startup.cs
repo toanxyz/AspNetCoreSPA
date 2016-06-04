@@ -41,7 +41,9 @@ namespace AspNetCoreSPA.Web
 
             services.ReplaceDefaultViewEngine();
 
+            services.AddKernelModule();
             services.AddBusinessTier();
+            services.AddDataAccessTier();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -56,6 +58,8 @@ namespace AspNetCoreSPA.Web
             app.UseMyIdentity();
 
             app.UseMvcWithDefaultRoute();
+
+            app.UserKernelModule();
 
             //CreateSampleData(app.ApplicationServices);
         }

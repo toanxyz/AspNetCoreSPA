@@ -1,5 +1,4 @@
-﻿using System;
-using AspNetCoreSPA.Business.Student;
+﻿using AspNetCoreSPA.Business.Student;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AspNetCoreSPA
