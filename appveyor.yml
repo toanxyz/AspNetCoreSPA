@@ -1,0 +1,23 @@
+version: 1.0.{build}
+branches:
+  only:
+  - master
+  - hieudd
+configuration: Debug
+platform: Any CPU
+before_build:
+- cmd: >-
+    set DNX_BUILD_VERSION=build-%APPVEYOR_BUILD_NUMBER%
+
+    dnvm upgrade
+
+    dnvm upgrade -r coreclr
+
+    dotnet restore
+build:
+  publish_wap: true
+  publish_azure: true
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
+  verbosity: minimal
