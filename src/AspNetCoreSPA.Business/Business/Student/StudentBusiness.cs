@@ -3,33 +3,29 @@ using AspNetCoreSPA.Common.Dtos;
 using AspNetCoreSPA.EntityFramework.Repositories.Student;
 using AspNetCoreSPA.Framework.Domain.Repositories;
 using AspNetCoreSPA.Framework.Domain.Uow;
+using AspNetCoreSPA.EntityFramework;
 
 namespace AspNetCoreSPA.Business.Student
 {
     public class StudentBusiness : IStudentBusiness
     {
-        private readonly IUnitOfWorkManager _unitOfWorkManager;
-        private readonly IStudentRepository _studentRepository;
+        private readonly ApplicationDbContext _dbContext;
 
-        public StudentBusiness(IUnitOfWorkManager unitOfWorkManager, IStudentRepository studentRepository)
+        public StudentBusiness(ApplicationDbContext dbContext)
         {
-            _unitOfWorkManager = unitOfWorkManager;
-            _studentRepository = studentRepository;
+            _dbContext = dbContext;
         }
 
         public bool CreateStudent(StudentInputDto studentInputDto)
         {
-            using (var unitOfWork = _unitOfWorkManager.Begin())
+            _dbContext.Students.Add(new Common.Entities.Student
             {
-                var student = _studentRepository.Insert(new Common.Entities.Student
-                {
-                    Email = studentInputDto.Email,
-                    FirstName = studentInputDto.FirstName,
-                    LastName = studentInputDto.LastName
-                });
+                Email = studentInputDto.Email,
+                FirstName = studentInputDto.FirstName,
+                LastName = studentInputDto.LastName
+            });
 
-                unitOfWork.Complete();
-            }
+            _dbContext.SaveChanges();
 
             return true;
         }
