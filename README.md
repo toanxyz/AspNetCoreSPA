@@ -1,6 +1,7 @@
 # ASP.NET Core RC2 Using WEB API And AngularJS
 
 [![Build status](https://ci.appveyor.com/api/projects/status/nx0urssttgc840eo?svg=true)](https://ci.appveyor.com/project/nmtoan07/aspnetcorespa)
+<a href='https://coveralls.io/github/nmtoan07/AspNetCoreSPA?branch=master'><img src='https://coveralls.io/repos/github/nmtoan07/AspNetCoreSPA/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 [In this article you will learn about ASP.NET Core RC2 using WEB API and AngularJS](http://www.codeproject.com/Articles/1102877/ASP-NET-Core-RC-Using-WEB-API-And-AngularJS)
 
