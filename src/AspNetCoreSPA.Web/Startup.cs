@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Net;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using AspNetCoreSPA.Common.Entities;
 using AspNetCoreSPA.EntityFramework;
 using AspNetCoreSPA.Web.Configurations;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace AspNetCoreSPA.Web
 {
@@ -45,6 +40,8 @@ namespace AspNetCoreSPA.Web
             services.AddMvc();
 
             services.ReplaceDefaultViewEngine();
+
+            services.AddBusinessTier();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -60,7 +57,7 @@ namespace AspNetCoreSPA.Web
 
             app.UseMvcWithDefaultRoute();
 
-            CreateSampleData(app.ApplicationServices);
+            //CreateSampleData(app.ApplicationServices);
         }
 
         private static async void CreateSampleData(IServiceProvider applicationServices)

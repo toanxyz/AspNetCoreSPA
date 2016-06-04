@@ -3,7 +3,9 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "AspNetCoreSPA.Business": "1.0.0-*",
     "AspNetCoreSPA.Common": "1.0.0-*",
+    "AspNetCoreSPA.Core": "1.0.0-*",
     "AspNetCoreSPA.DataAccess": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
