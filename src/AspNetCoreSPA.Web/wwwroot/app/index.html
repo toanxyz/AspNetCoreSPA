@@ -10,39 +10,79 @@
     </script>
 
     <!-- bower:css -->
-    <link rel="stylesheet" href="/libraries/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/libraries/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="/libraries/bootstrap-css/index.css" />
     <!-- endbower -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/styles/site.css">
     <!-- endinject -->
 </head>
 <body ng-app="app">
-    <div ui-view="login"></div>
+    <!--<div ui-view="login"></div>
     <div ui-view="main"></div>
+    <div ui-view="subject"></div>-->
+    <!--<div ui-view="extabs"></div>-->
+    <div ui-view></div>
 
     <!-- bower:js -->
     <script src="/libraries/jquery/dist/jquery.js"></script>
-    <script src="/libraries/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/libraries/angular/angular.js"></script>
     <script src="/libraries/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/libraries/angular-loading-bar/build/loading-bar.js"></script>
     <script src="/libraries/angular-apimock/dist/angular-apimock.js"></script>
     <script src="/libraries/ngstorage/ngStorage.js"></script>
+    <script src="/libraries/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/libraries/angular-animate/index.js"></script>
     <!-- endbower -->
+    
     <!-- inject:js -->
+    
     <script src="/scripts/site.common.js"></script>
+    
     <script src="/scripts/site.ng.js"></script>
+    
+    <script src="/scripts/ui-bootstrap-tpls-1.0.2.min.js"></script>
+    
     <script src="/app/index.module.js"></script>
+    
     <script src="/app/services/auth.service.js"></script>
+    
     <script src="/app/login/login.controller.js"></script>
+    
     <script src="/app/main/main.controller.js"></script>
+    
+    <script src="/app/components/class/class.controller.js"></script>
+    
+    <script src="/app/components/courseRegister/courseRegister.controller.js"></script>
+    
+    <script src="/app/components/extabs/extabs.controller.js"></script>
+    
+    <script src="/app/components/course/course.controller.js"></script>
+    
+    <script src="/app/components/courseList/courseList.controller.js"></script>
+    
     <script src="/app/components/home/home.controller.js"></script>
+    
+    <script src="/app/components/subject/subject.controller.js"></script>
+    
     <script src="/app/components/student/student.controller.js"></script>
+    
     <script src="/app/index.route.js"></script>
-    <script src="/app/login/login.route.js"></script>
-    <script src="/app/main/main.route.js"></script>
+    
+    <script src="/app/components/class/class.route.js"></script>
+    
+    <script src="/app/components/courseRegister/courseRegister.route.js"></script>
+    
+    <script src="/app/components/course/course.route.js"></script>
+    
+    <script src="/app/components/courseList/courseList.route.js"></script>
+    
+    <script src="/app/components/home/home.route.js"></script>
+    
+    <script src="/app/components/subject/subject.route.js"></script>
+    
     <script src="/app/components/student/student.route.js"></script>
+    
     <!-- endinject -->
 </body>
 </html>

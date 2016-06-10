@@ -1,0 +1,15 @@
+﻿<h2>Subject List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Subject Id</th>
+            <th>Subject Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="subject in vm.subjects">
+            <td>{{subject.subjectId}}</td>
+            <td>{{subject.subjectName}}</td>
+        </tr>
+    </tbody>
+</table>

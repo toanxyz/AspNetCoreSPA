@@ -60,7 +60,7 @@ namespace AspNetCoreSPA.Web
 
             app.UseMvcWithDefaultRoute();
 
-            CreateSampleData(app.ApplicationServices);
+            //CreateSampleData(app.ApplicationServices);
         }
 
         private static async void CreateSampleData(IServiceProvider applicationServices)

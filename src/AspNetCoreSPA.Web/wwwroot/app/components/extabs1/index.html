@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.2.min.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <style type="text/css">
+        form.tab-form-demo .tab-pane {
+            margin: 20px 20px;
+        }
+    </style>
+    <div ng-controller="TabsDemoCtrl">
+        <p>Select a tab by setting active binding to true:</p>
+        <p>
+            <button type="button" class="btn btn-default btn-sm" ng-click="active = 1">Select second tab</button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="active = 2">Select third tab</button>
+        </p>
+        <p>
+            <button type="button" class="btn btn-default btn-sm" ng-click="tabs[1].disabled = ! tabs[1].disabled">Enable / Disable third tab</button>
+        </p>
+        <hr />
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Static title">Static content</uib-tab>
+            <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
+                {{tab.content}}
+            </uib-tab>
+            <uib-tab index="3" select="alertMe()">
+                <uib-tab-heading>
+                    <i class="glyphicon glyphicon-bell"></i> Alert!
+                </uib-tab-heading>
+                I've got an HTML heading, and a select callback. Pretty cool!
+            </uib-tab>
+        </uib-tabset>
+        <hr />
+    </div>        
+</body>
+</html>

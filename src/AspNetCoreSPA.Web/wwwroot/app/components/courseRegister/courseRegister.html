@@ -1,0 +1,78 @@
+﻿<div class="row">
+    <div class="col-sm-9 col-md-10 main">
+        <h1>Detail about registy of course</h1>
+        <!--<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+                    <th>Class number</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in vm.courses">
+                    <td>{{course.CourseId}}</td>
+                    <td>{{course.CourseName}}</td>
+                    <td>{{course.course.length}}</td>
+                    <td>
+                        <a ui-sref="class">Class list</a>
+                        <a href="#/cards/{{card.id}}">Class list</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>-->
+
+        <!--<div ng-repeat="course in vm.courses">
+            <div ng-repeat="class in course.class">
+                <div ng-repeat="student in class.student">
+                    <ul>
+                        <li>{{student.studentId}}</li>
+                        <li>{{student.studentName}}</li>
+                        <li>{{student.studentSex}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Class name</th>
+                    <th>Student name</th>
+                    <th>Student sex</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="course in vm.courses" ng-if="false"></tr>
+                <tr ng-repeat-start="c in course.class" ng-if="false"></tr>
+                <tr ng-repeat="s in c.student">
+                    <td>
+                        <a href="#/courseRegister/course/{{course.courseId}}">{{course.courseName}}</a>
+                    </td>
+                    <td>{{c.className}}</td>
+                    <td>{{s.studentName}}</td>
+                    <td>{{s.studentSex}}</td>
+                </tr>
+                <!--<tr ng-repeat-end ng-hide="false">nhatlm</tr>
+                <tr ng-repeat-end ng-hide="true">hieudd</tr>-->
+                <tr ng-repeat-end ng-if="false"></tr>
+                <tr ng-repeat-end ng-if="false"></tr>
+            </tbody>
+        </table>    
+            
+        <div class="container body-content">     
+                   
+            <div ui-view="content"></div>
+
+        </div>
+
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Static title">Static content</uib-tab>
+            <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" disable="tab.disabled">
+                {{tab.content}}
+            </uib-tab>            
+        </uib-tabset>
+
+    </div>
+</div>

@@ -1,0 +1,139 @@
+﻿[ 
+    {
+      "class": [
+        {
+          "student": [
+            {
+              "studentId": "st01",
+              "studentName": "studen 01",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st02",
+              "studentName": "studen 02",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st03",
+              "studentName": "studen 03",
+              "studentSex": "Nu"
+            }
+          ],
+          "classId": "C01",
+          "className": "Class 01"
+        },
+        {
+          "student": [
+            {
+              "studentId": "st01",
+              "studentName": "studen 01",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st02",
+              "studentName": "studen 02",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st03",
+              "studentName": "studen 03",
+              "studentSex": "Nu"
+            },
+            {
+              "studentId": "st04",
+              "studentName": "studen 04",
+              "studentSex": "Nu"
+            }
+          ],
+          "classId": "C02",
+          "className": "Class 02"
+        }
+      ],
+      "courseId": "CS201601",
+      "courseName": "CSharp 01/2016"
+    },    
+    {
+      "class": [
+        {
+          "student": [
+            {
+              "studentId": "st01",
+              "studentName": "studen 01",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st02",
+              "studentName": "studen 02",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st03",
+              "studentName": "studen 03",
+              "studentSex": "Nu"
+            },
+            {
+              "studentId": "st04",
+              "studentName": "studen 04",
+              "studentSex": "Nu"
+            }
+          ],
+          "classId": "C01",
+          "className": "Class 01"
+        },
+        {
+          "student": [
+            {
+              "studentId": "st01",
+              "studentName": "studen 01",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st02",
+              "studentName": "studen 02",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st03",
+              "studentName": "studen 03",
+              "studentSex": "Nu"
+            },
+            {
+              "studentId": "st04",
+              "studentName": "studen 04",
+              "studentSex": "Nu"
+            }
+          ],
+          "classId": "C02",
+          "className": "Class 02"
+        },
+        {
+          "student": [
+            {
+              "studentId": "st01",
+              "studentName": "studen 01",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st02",
+              "studentName": "studen 02",
+              "studentSex": "Nam"
+            },
+            {
+              "studentId": "st03",
+              "studentName": "studen 03",
+              "studentSex": "Nu"
+            },
+            {
+              "studentId": "st04",
+              "studentName": "studen 04",
+              "studentSex": "Nu"
+            }
+          ],
+          "classId": "C03",
+          "className": "Class 03"
+        }
+      ],
+      "courseId": "CS201602",
+      "courseName": "CSharp 02/2016"
+    }  
+]

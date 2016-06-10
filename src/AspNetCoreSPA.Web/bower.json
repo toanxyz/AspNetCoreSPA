@@ -3,19 +3,20 @@
   "private": true,
   "dependencies": {
     "jquery": "2.2.4",
-    "bootstrap": "3.3.6",
-    "angular": "1.5.6",
     "angular-ui-router": "0.3.0",
     "angular-loading-bar": "0.9.0",
     "angular-apimock": "0.3.3",
-    "ngstorage": "0.3.10"
+    "ngstorage": "0.3.10",
+    "angular-bootstrap": "1.3.3",
+    "angular-animate": "http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js",
+    "bootstrap-css": "http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/js/bootstrap.js"        
       ]
     }
   },

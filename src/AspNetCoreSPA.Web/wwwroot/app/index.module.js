@@ -3,12 +3,14 @@
 
     var app =  angular
         .module('app',
-        [
+        [            
             'apiMock',
             'angular-loading-bar',
             'ngStorage',
             'ui.router',
-            'site'
+            'site',
+            'ngAnimate',
+            'ui.bootstrap'
         ]);
 
     app.config(function (apiMockProvider) {

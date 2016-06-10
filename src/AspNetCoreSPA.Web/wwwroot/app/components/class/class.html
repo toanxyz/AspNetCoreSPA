@@ -1,0 +1,39 @@
+﻿<h2>Class List</h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Class Id</th>
+        <th>Class Name</th>        
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="class in vm.classes">
+        <td>{{class.ClassId}}</td>
+        <td>{{class.ClassName}}</td>        
+    </tr>
+    </tbody>
+</table>
+
+<input type="button" class="btn btn-default" value="Create" data-toggle="modal" data-target="#formCreateClass"/>
+
+<form id="formCreateClass" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create new Class</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="className">Class Name</label>
+                    <input type="text" class="form-control" id="classtName" placeholder="Class Name" ng-model="vm.createClassInput.ClassName">
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" ng-click="vm.createStudent()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</form>
