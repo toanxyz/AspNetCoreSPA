@@ -5,6 +5,8 @@
       .module('app')
       .config(routerConfig);
 
+    routerConfig.$inject = ['$stateProvider'];
+
     function routerConfig($stateProvider) {
         $stateProvider
             .state('login', {

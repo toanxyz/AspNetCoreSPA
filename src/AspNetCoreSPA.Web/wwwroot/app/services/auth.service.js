@@ -5,31 +5,38 @@
         .module('app')
         .factory('auth0Service', auth0Service);
 
+    auth0Service.$inject = ['$http', '$sessionStorage'];
+
     function auth0Service($http, $sessionStorage) {
         var service = {};
 
-        service.login = function (userInfo, callback) {
+        service.login = login;
+        service.authenticate = authenticate;
+        service.clear = clear;
+        service.isAuthenticated = isAuthenticated;
+
+        return service;
+
+        function login(userInfo, callback) {
             $http.post('/api/account/login', JSON.stringify(userInfo))
                 .success(function (response) {
                     callback(response);
                 });
         }
 
-        service.authenticate = function () {
+        function authenticate() {
             $sessionStorage.isAuthenticated = true;
         }
 
-        service.clear = function () {
+        function clear() {
             $sessionStorage.isAuthenticated = false;
         }
 
-        service.isAuthenticated = function () {
+        function isAuthenticated() {
             if ($sessionStorage.isAuthenticated) {
                 return true;
             }
             return false;
         }
-
-        return service;
     }
 })();

@@ -5,15 +5,21 @@
         .module('app')
         .controller('StudentController', StudentController);
 
+    StudentController.$inject = ['$scope', '$http'];
+
     function StudentController($scope, $http) {
         var vm = this;
 
         vm.students = [];
-
         vm.createStudentInput = {};
         vm.searchStudent = {};
 
-        vm.createStudent = function () {
+        vm.createStudent = createStudent;
+        vm.searchStudent = searchStudent;
+
+        activate();
+
+        function createStudent() {
             $http.post("api/student/createStudent", JSON.stringify(vm.createStudentInput))
                 .then(function (response) {
                     // Re-load data
@@ -23,8 +29,8 @@
                     $('#formCreateStudent').modal('toggle');
                 });
         }
-        
-        vm.searchStudent = function () {
+
+        function searchStudent() {
             $http.get("api/student/searchStudent", {
                 params: { firstName: vm.searchStudent.FirstName }
             }).then(function (respone) {
@@ -33,12 +39,11 @@
             });
         }
 
-        $http.get("api/student/getAll",
-            {
-                apiMock: true
-            })
-            .then(function(response) {
-                vm.students = response.data;
-            });
+        function activate() {
+            $http.get("api/student/getAll", { apiMock: true })
+                .then(function (response) {
+                    vm.students = response.data;
+                });
+        }
     }
 })();

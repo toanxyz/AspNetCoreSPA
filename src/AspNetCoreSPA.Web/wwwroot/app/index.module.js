@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app =  angular
+    angular
         .module('app',
         [
             'apiMock',
@@ -11,14 +11,17 @@
             'site'
         ]);
 
-    app.config(function (apiMockProvider) {
-        apiMockProvider.config({
-            mockDataPath: 'app/mock_data',
-            apiPath: 'api'
-        });
-    });
+    angular
+        .module('app')
+        .config(mockConfig);
 
-    app.run(function ($rootScope, $templateCache, $state, auth0Service) {
+    angular
+        .module('app')
+        .run(runBlock);
+
+    runBlock.$inject = ['$rootScope', '$templateCache', '$state', 'auth0Service'];
+
+    function runBlock($rootScope, $templateCache, $state, auth0Service) {
         $rootScope.$on('$viewContentLoaded', function () {
             $templateCache.removeAll();
         });
@@ -43,6 +46,14 @@
                 $state.go('login');
             }
         });
-    });
+    }
 
+    mockConfig.$inject = ['apiMockProvider'];
+
+    function mockConfig(apiMockProvider) {
+        apiMockProvider.config({
+            mockDataPath: 'app/mock_data',
+            apiPath: 'api'
+        });
+    }
 })();
